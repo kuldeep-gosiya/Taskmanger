@@ -49,3 +49,12 @@ jobs:
           port: ${{secrets.PORT}}
           source: "angular.zip"
           target: "/var/www/html/angular-app/"
+      - name: SSH Unzip file
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USER}}
+          key: ${{secrets.KEY}}
+          port: ${{secrets.PORT}}
+          run: |
+             sudo unzip angular.zip
