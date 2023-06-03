@@ -25,7 +25,7 @@ jobs:
     - name: make zip file 
       run: |
         sudo apt-get install zip
-        zip -r compressed_angular.zip dist/  
+        zip -r angular.zip dist/  
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
