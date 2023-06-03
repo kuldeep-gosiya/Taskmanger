@@ -56,5 +56,5 @@ jobs:
           username: ${{secrets.USER}}
           key: ${{secrets.KEY}}
           port: ${{secrets.PORT}}
-          run: |
-             sudo unzip angular.zip
+          uses: mountudor/action-zip@v1
+          run: sudo unzip angular.zip
