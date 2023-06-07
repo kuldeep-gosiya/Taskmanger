@@ -14,27 +14,27 @@ export class TasksService {
 
   //retreiving tasks
   getTasks(){
-    return this.http.get('http://localhost:3000/api/tasks').pipe(map(res=>res));
+    return this.http.get('http://localhost:5000/api/tasks').pipe(map(res=>res));
   }
 
   addTask(newTask:any){
     var headers=new HttpHeaders();
     //const headers = new HttpHeaders().set('Content-Type', 'application/json')
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/api/add',newTask,{headers:headers}).pipe(map(res=>res));
+    return this.http.post('http://localhost:5000/api/add',newTask,{headers:headers}).pipe(map(res=>res));
   }
   deleteTask(id:any){
-    return this.http.delete('http://localhost:3000/api/delete/'+id).pipe(map(res => res));
+    return this.http.delete('http://localhost:5000/api/delete/'+id).pipe(map(res => res));
   }
 
   viewTask(id:any){
-    return this.http.get('http://localhost:3000/api/viewtask/'+id).pipe(map(res => res));
+    return this.http.get('http://localhost:5000/api/viewtask/'+id).pipe(map(res => res));
   }
 
   updateTask(id:any,newTask:any){
     var headers=new HttpHeaders();
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/api/update/'+id,newTask,{headers:headers}).pipe(map(res=>res));
+    return this.http.post('http://localhost:5000/api/update/'+id,newTask,{headers:headers}).pipe(map(res=>res));
   }
 
 }
