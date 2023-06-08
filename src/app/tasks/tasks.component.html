@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let task of tasks" [ngStyle]="{'background-color': task.complete ? 'lightgreen' : 'white'}">
+        <tr *ngFor="let task of tasks" [ngStyle]="{'background-color': task.complete ? 'white' : 'white'}">
             <td>
                 {{task.task_name}}
             </td>
