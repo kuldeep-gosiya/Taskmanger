@@ -7,54 +7,13 @@ on:
  
 jobs:
   build:
+  name: build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16]
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: use node js
-      uses: actions/setup-node@v3
+    steps: 
+    - name: trigger dsingle job
+      uses: appleboy/jenkins-action@master
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install and build 
-      run: |
-        npm install
-        npm run build
-    - name: make zip file 
-      run: |
-        sudo apt-get install zip
-        zip -r angular.zip dist/  
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: package
-        path: angular.zip
-      
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download package
-        uses: actions/download-artifact@v3
-        with:
-          name: package
-      - name: SSH deploy
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{secrets.HOST}}
-          username: ${{secrets.USER}}
-          key: ${{secrets.KEY}}
-          port: ${{secrets.PORT}}
-          source: "angular.zip"
-          target: "/var/www/html/angular-app/test"
-      - name: SSH Unzip file
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{secrets.HOST}}
-          username: ${{secrets.USER}}
-          key: ${{secrets.KEY}}
-          port: ${{secrets.PORT}}
-          script: | 
-            sudo unzip /var/www/html/angular-app/angular.zip -d /var/www/html/angular-app/client/
+        url: "http://192.168.1.128:8080"
+        user: "kuldeep"
+        token: ${{111ab9cce6d31c658a5b409d1233418eb1}}
+        job: "deployment"
