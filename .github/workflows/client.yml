@@ -15,5 +15,5 @@ jobs:
       with:
         url: "http://192.168.1.128:8080"
         user: "kuldeep"
-        token: ${{111ab9cce6d31c658a5b409d1233418eb1}}
+        token: ${{TOKEN}}
         job: "deployment"
