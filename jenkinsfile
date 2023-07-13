@@ -21,7 +21,7 @@ pipeline {
     }
         stage('create zip file'){
             steps {
-                script {"zip -r test.zip *"
+                script {"zip -r test.zip * "
                 }
             }
         }
