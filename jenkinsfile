@@ -1,7 +1,7 @@
 pipeline {
    agent any 
    trigger {	
-      poliscm(* * * * *)
+      pollscm(* * * * *)
    }
    tools {
        nodejs 'node 16' 
