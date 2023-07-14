@@ -1,35 +1,20 @@
 pipeline {
-    agent any
-    
-    stages {
-        stage('npm install'){
-            steps {
-               git branch: 'deployment', url: 'https://github.com/kuldeep-gosiya/Taskmanger.git'
-                script {
-                    "npm install"
-                    
-                    
-                }
-        }
-        }
-
-        stage('npm build'){
-            steps {
-                script {"npm run build"
-        }    
-    }
-    }
-        stage('create zip file'){
-            steps {
-                script {"zip -r test.zip * "
-                }
-            }
-        }
-        stage('deployment'){
-            steps {
-                script {"scp -i test.zip rao@192.168.1.128:/var/www/html/jenkinstest/"
-                }
-            }
-        }
-       
-    }}
+   agent any 
+   trigger {	
+      poliscm(* * * * *)
+   }
+   tools {
+       nodejs 'node 16' 
+   }
+	
+   stage('inpm install'){
+      stage{
+	script {"npm install"
+   }
+   }
+   stage('npm build'){
+      stage{
+	script {"npm run build"
+   }
+   }
+   
